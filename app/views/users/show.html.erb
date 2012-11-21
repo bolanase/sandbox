@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>User</h1>
+</div>
+
+<%= link_to "Click here to Authorize Facebook", "https://www.facebook.com/dialog/oauth?client_id=#{@my_app_id}&redirect_uri=http://localhost:3000/auth/facebook&state=SOME_ARBITRARY_BUT_UNIQUE_STRING&scope=friends_location" %>
+
+<dl class="dl-horizontal">
+<p><strong>Email:</strong> <%= @user.email %></p>
+<p><strong>Name:</strong> <%= @user.name %></p>
+<p><strong>Location:</strong> <%= @user.location %></p>
+
+<%= gmaps(markers: { data: @json, options: { do_clustering: true, randomize: true, max_random_distance: 10000 } }) %>
+
+<ul>
+<% @friends.each do |friend| %>
+  <li><%= friend.name %> is from <%= friend.location %></li>
+<% end %>
+</ul>
+
+
+
+
+
+
+
+
+
+
